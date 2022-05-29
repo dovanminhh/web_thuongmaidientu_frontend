@@ -1,0 +1,56 @@
+<div class="content-wrapper">
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Comments List</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="card">
+            <div class="card-body">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>CommentsId</th>
+                            <th>Note</th>
+                            <th>Start</th>
+                            <th>Status</th>
+                            <th>Customer</th>
+                            <th>Product</th>
+                            <th>CreatedDate</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let comments of commentes">
+                            <td> {{ comments.id }}</td>
+                            <td> {{ comments.note }}</td>
+                            <td>
+                                {{comments.start}}
+                                
+                            </td>
+                            <td> {{ comments.status == 1? "Hiện": "Ẩn" }}</td>
+                            <td> {{ comments.objCus.name }}</td>
+                            <td> {{ comments.objProduct.name }}</td>
+                            <td> {{ comments.created_date }}</td>
+                            <td *ngIf="comments.status == 0">
+                                <button (click)="updateStatusComments(comments.id)">duyệt</button>
+                                </td>
+                                <td *ngIf="comments.status == 1">
+                                    <button (click)="updateStatusComments(comments.id)">Ẩn</button>
+                                    </td>
+                            <td>
+                               
+                                <button (click)="deleteComments(comments.id)" class="delete"
+                                    style="margin-left: 10px;">Delete</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+</div>

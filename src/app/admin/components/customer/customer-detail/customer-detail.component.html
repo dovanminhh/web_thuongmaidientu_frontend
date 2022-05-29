@@ -1,0 +1,67 @@
+<div class="content-wrapper">
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Detail customer</h1>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="card">
+            <div class="card-body">
+                <form (ngSubmit)="onSubmit()">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="">CustomerId</label>
+                                <input style="width:100%;" type="number" class="form-control" id="id" [(ngModel)]="customer.id"
+                                    name="id" readonly="readonly"> 
+                            </div>
+                            <div class="form-group">
+                                <label for="">CustomerName</label>
+                                <input style="width:100%;" type="text" class="form-control" id="name" [(ngModel)]="customer.name"
+                                    name="name">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="">Email</label>
+                                <input style="width:100%;" type="email" class="form-control" id="email"
+                                    [(ngModel)]="customer.email" name="email">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Password</label>
+                                <input style="width:100%;" type="password" class="form-control" id="password" [(ngModel)]="customer.password"
+                                    name="password">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Phone</label>
+                                <input style="width:100%;" type="number" class="form-control" id="phone"
+                                    [(ngModel)]="customer.phone" name="phone">
+                            </div>
+                        </div>
+            
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="">Address</label>
+                                <input style="width:100%;" type="text" class="form-control" id="address"
+                                    [(ngModel)]="customer.address" name="address">
+                            </div>
+                            <div class="form-group">
+                                <label for="">CreatedDate</label>
+                                <input style="width:100%;" type="date" class="form-control" id="created_date"
+                                    [(ngModel)]="customer.created_date" name="created_date">
+                            </div>
+                            
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+</div>
+

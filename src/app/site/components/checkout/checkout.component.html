@@ -1,0 +1,194 @@
+<!-- Breadcrumb Area Start -->
+<div class="section breadcrumb-area bg-name-bright">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <div class="breadcrumb-wrapper">
+                    <h2 class="breadcrumb-title">Checkout</h2>
+                    <ul>
+                        <li><a [routerLink]="['']">Home</a></li>
+                        <li>Checkout</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Breadcrumb Area End -->
+
+
+
+
+
+<div class="section section-margin">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+              
+                <div class="coupon-accordion">
+                  
+                    <h3 class="title">Have a coupon? <span id="showcoupon">Click here to enter your code</span></h3>
+                    <div id="checkout_coupon" class="coupon-checkout-content">
+                        <div class="coupon-info">
+                            <form action="#">
+                                <p class="checkout-coupon d-flex">
+                                    <input placeholder="Coupon code" type="text">
+                                    <input class="btn btn-primary btn-hover-dark rounded-0" value="Apply Coupon" type="submit">
+                                </p>
+                            </form>
+                        </div>
+                    </div>
+                
+                </div>
+             
+            </div>
+        </div>
+        <div class="row m-b-n20">
+            <div class="col-lg-6 col-12 m-b-20">
+             
+                <form (ngSubmit)="insertCheckout()" [formGroup]="formcus" method="post">
+                    <div class="checkbox-form">
+                   
+                        <h3 class="title">Billing Details</h3>
+                      
+                        <div class="row">
+                       
+                            <div class="col-md-12">
+                                <div class="checkout-form-list">
+                                    <label>Your Name</label>
+                                    <input formControlName="name" [value]="customer.name" type="text">
+                                </div>
+                            </div>
+                      
+                            <div class="col-md-12">
+                                <div class="checkout-form-list">
+                                    <label>Address <span class="required">*</span></label>
+                                    <input formControlName="address" [value]="customer.address" type="text">
+                                </div>
+                            </div>
+                   
+                            <div class="col-md-6">
+                                <div class="checkout-form-list">
+                                    <label>Email Address <span class="required">*</span></label>
+                                    <input formControlName="email" [value]="customer.email" type="email">
+                                </div>
+                            </div>
+                
+                            <div class="col-md-6">
+                                <div class="checkout-form-list">
+                                    <label>Phone <span class="required">*</span></label>
+                                    <input formControlName="phone" [value]="customer.phone" type="text">
+                                </div>
+                            </div>
+                            
+
+                            <div class="order-notes m-t-15 m-b-n10">
+                                <div class="checkout-form-list checkout-form-list-2">
+                                    <label>Order Notes</label>
+                                    <textarea id="checkout-mess" cols="30" rows="10" placeholder="Notes about your order, e.g. special notes for delivery." formControlName="note"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-md-12">  
+                            </div>
+                       
+                        </div>
+
+                        
+                    </div>
+                </form>
+              
+
+            </div>
+
+            <div class="col-lg-6 col-12 m-b-20">
+
+               <form (ngSubmit)="insertCheckout()" [formGroup]="formcus" method="post">
+                <div class="your-order-area border">
+                    <h3 class="title">Your order</h3>
+                    <div class="your-order-table table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr class="cart-product-head">
+                                    <th class="cart-product-name text-start">Product</th>
+                                    <th class="cart-product-total text-end">Total</th>
+                                </tr>
+                            </thead>
+                            <tbody *ngFor="let it of cartItems">
+                                <tr class="cart_item">
+                                    <td class="cart-product-name text-start ps-0">{{it.name}}<strong class="product-quantity"> × {{it.quantity}}</strong></td>
+                                    <td class="cart-product-total text-end pe-0"><span class="amount">{{it.quantity}}</span></td>
+                                    
+                                </tr>
+                                
+                            </tbody>
+                         
+
+                     
+                            <tfoot>
+                                <tr class="cart-subtotal">
+                                    <th class="text-start ps-0">Cart Subtotal</th>
+                                    <td class="text-end pe-0"><span class="amount">{{totalPrice | currency: 'USD'}}</span></td>
+                                </tr>
+                                <tr class="order-total">
+                                    <th class="text-start ps-0">Order Total</th>
+                                    <td class="text-end pe-0"><strong><span class="amount">{{totalPrice | currency: 'USD'}}</span></strong></td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                
+
+              
+                    <div class="payment-accordion-order-button">
+                        <div class="payment-accordion">
+                            <div class="single-payment">
+                                <h5 class="panel-title m-b-15">
+                                    <a class="collapse-off" data-bs-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                        Direct Bank Transfer.
+                                    </a>
+                                </h5>
+                                
+                            </div>
+                            <div class="single-payment">
+                                <h5 class="panel-title m-b-15">
+                                    <a class="collapse-off" data-bs-toggle="collapse" href="#collapseExample-2" aria-expanded="false" aria-controls="collapseExample-2">
+                                        Cheque Payment.
+                                    </a>
+                                </h5>
+                                <div class="collapse" id="collapseExample-2">
+                                    <div class="card card-body rounded-0">
+                                        <p>Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order won’t be shipped until the funds have cleared in our account.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="single-payment">
+                                <h5 class="panel-title m-b-15">
+                                    <a class="collapse-off" data-bs-toggle="collapse" href="#collapseExample-3" aria-expanded="false" aria-controls="collapseExample-3">
+                                        Paypal.
+                                    </a>
+                                </h5>
+                                <div class="collapse" id="collapseExample-3">
+                                    <div class="card card-body rounded-0">
+                                        <p>Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order won’t be shipped until the funds have cleared in our account.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="order-button-payment">
+                            <button class="btn btn-primary btn-hover-dark rounded-0 w-100">Place Order</button>
+                        </div>
+                    </div>
+                    
+                </div>
+            </form>
+            </div>
+        
+        </div>
+    </div>
+</div>
+<!-- Scroll Top Start -->
+<a href="#" class="scroll-top show" id="scroll-top">
+    <i class="arrow-top ti-angle-double-up"></i>
+    <i class="arrow-bottom ti-angle-double-up"></i>
+</a>
+<!-- Scroll Top End -->

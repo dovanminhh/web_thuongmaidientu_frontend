@@ -1,0 +1,38 @@
+.text-start h5{
+    position: absolute;
+    color: white;
+    right: 400px;
+    bottom: 360px;
+    font-size: 20px;
+}
+.text-start h2{
+    position: absolute;
+    color: white;
+    right: 280px;
+    bottom: 280px;
+}
+.text-start p{
+    position: absolute;
+    color: white;
+    right: 110px;
+    bottom: 200px;
+    font-size: 20px;
+}
+.text-start > a{
+    position: absolute;
+    color: white;
+    right: 410px;
+    bottom: 120px;
+    font-size: 18px;
+    background-color: burlywood;
+    padding: 15px;
+}
+.text-start > a:hover{
+    color: black;
+}
+.product{
+    border: 1px solid blanchedalmond;
+}
+
+
+

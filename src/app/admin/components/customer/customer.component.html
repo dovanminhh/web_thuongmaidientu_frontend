@@ -1,0 +1,50 @@
+<div class="content-wrapper">
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Customer List</h1>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="card">
+            <div class="card-body">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>CustomerId</th>
+                            <th>CustomerName</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Address</th>
+                            <th>CreatedDate</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let customer of customers">
+                            <td> {{ customer.id }}</td>
+                            <td> {{ customer.name }}</td>
+                            <td> {{ customer.email }}</td>
+                            <td> {{ customer.phone }}</td>
+                            <td> {{ customer.address }}</td>
+                            <td> {{ customer.created_date }}</td>
+                            <td>
+                                <button (click)="detailsCustomer(customer.id)" class="delete"
+                                    style="margin-left: 10px;">Detail</button>
+                            </td>
+                            <td>
+                                <button (click)="deleteCustomer(customer.id)" class="delete"
+                                    style="margin-left: 10px;">Delete</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+</div>

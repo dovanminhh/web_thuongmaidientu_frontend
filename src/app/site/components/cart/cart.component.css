@@ -1,0 +1,17 @@
+button {
+    border: none;
+}
+button .nut-right{
+    background-color: burlywood;
+    color: white;
+    padding: 13px;
+}
+button .nut-left{
+    background-color: burlywood;
+    color: white;
+    padding: 13px;
+}
+.col {
+    margin-top: 23px;
+    padding-right: 30px;
+}

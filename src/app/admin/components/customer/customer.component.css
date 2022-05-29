@@ -1,0 +1,7 @@
+.card .delete{
+    border: none;
+    background-color: red;
+    color: aliceblue;
+    padding: 5px 10px 5px 10px;
+    font-size: 18px;
+}

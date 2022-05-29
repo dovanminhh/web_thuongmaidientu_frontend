@@ -1,0 +1,52 @@
+<div class="content-wrapper">
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Category List</h1>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="card">
+            <div class="card-body">
+                    <button routerLink="create-category" type="button" class="add">Add New</button>
+
+                    <form class="form-inline md-form mr-auto mb-4" [formGroup]="searchForm" method="get" (ngSubmit)="Search()">
+                        <input class="form-control mr-sm-2" type="text" formControlName="search" name="name" placeholder="enter search name" aria-label="Search">
+                        <button class="btn btn-sm my-0 " type="submit" style="background-color: gainsboro;">Search</button>
+                    </form>
+
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>CategoryId</th>
+                                <th>CategoryName</th>
+                                <th>Status</th>
+                                <th>CreatedDate</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor = "let category of categoryes">
+                                <td> {{ category.id }}</td>
+                                <td> {{ category.name }}</td>
+                                <td> {{ category.status == 1? "Đang bán": "Ngưng bán" }}</td>
+                                <td> {{ category.created_date}}</td>
+                                <td>
+                                    <button (click)="updateCategory(category.id)" class="edit">Edit</button>
+                                </td>
+                                <td>
+                                    <button (click)="deleteCategory(category.id)" class="delete">Delete</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+            </div>
+        </div>
+    </section>
+
+</div>
+

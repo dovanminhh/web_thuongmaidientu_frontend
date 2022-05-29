@@ -1,0 +1,50 @@
+<div class="content-wrapper">
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Order List</h1>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="card">
+            <div class="card-body">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>OrderId</th>
+                                <th>OrderName</th>
+                                <th>Address</th>
+                                <th>Phone</th>
+                                <th>Status</th>
+                                <th>Note</th>
+                                <th>Customer</th>
+                                <th>CreatedDate</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor = "let order of orders">
+                                <td> {{ order.id }}</td>
+                                <td> {{ order.name }}</td>
+                                <td> {{ order.address }}</td>
+                                <td> {{ order.phone }}</td>
+                                <td style="color: blue;"> {{ order.status == 1? "Đang giao": "Giao hàng thành công" }}</td>
+                                <td>{{ order.note }}</td>
+                                <td>{{order.objCus.name}}</td>
+                                <td>{{order.created_date}}</td>
+                                <td>
+                                    <button (click)="detailOrder(order.id)" class="detail">Detail</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+            </div>
+        </div>
+    </section>
+</div>
+
+

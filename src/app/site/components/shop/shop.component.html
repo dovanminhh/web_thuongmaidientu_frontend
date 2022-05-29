@@ -1,0 +1,182 @@
+<!-- Breadcrumb Area Start -->
+<div class="section breadcrumb-area bg-name-bright">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <div class="breadcrumb-wrapper">
+                    <h2 class="breadcrumb-title">Shop</h2>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li>Shop</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Breadcrumb Area End -->
+
+<!-- Shop Section Start -->
+<div class="section section-margin">
+    <div class="container">
+        <div class="row flex-row-reverse">
+            <div class="col-lg-9 col-12">
+                <!-- Shop Wrapper Start -->
+                <div class="row shop_wrapper grid_3">
+                    <!-- Single Product Start -->
+                    <div class="col-lg-4 col-md-4 col-sm-6 product" *ngFor="let product of products">
+                        <div class="product-inner">
+                            <div class="thumb">
+                                <a [routerLink]="['/detail', product.id]" class="image">
+                                    <img class="fit-image" [src]="this.host+product.image" alt="Product">
+                                </a>
+                                <div class="action-wrapper">
+
+                                    <a class="action cart" title="Cart" (click)="addToCart(product)"><i
+                                            class="ti-shopping-cart" style="cursor: pointer;"></i></a>
+                                </div>
+                            </div>
+                            <div class="content">
+                                <h5 class="title"><a>{{product.name}}</a></h5>
+                                <!-- <span class="rating">
+                                    <i class="fa fa-star-o"></i>
+                                    <i class="fa fa-star-o"></i>
+                                    <i class="fa fa-star-o"></i>
+                                    <i class="fa fa-star-o"></i>
+                                    <i class="fa fa-star-o"></i>
+                                </span> -->
+                                <!-- <button mat-icon-button color="accent" *ngFor="let r of ratingArr; index as i" (click)="onClick(i)">
+                                   <mat-icon>
+                                       {{ returnStar(i) }}
+                                   </mat-icon>
+
+                               </button> -->
+                                <span class="price" *ngIf="product.sale_price > 0">
+                                    <span class="old">{{product.price | currency: 'USD'}}</span>
+                                    <span class="new">{{product.sale_price | currency: 'USD'}}</span>
+                                </span>
+                                <span class="price" *ngIf="product.sale_price == 0">
+                                    <span class="new">{{product.price | currency: 'USD'}}</span>
+                                </span>
+                                <span class="description">
+                                    {{product.description}}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Single Product End -->
+                </div>
+                <!-- Shop Wrapper End -->
+
+                <!--shop toolbar start-->
+                <div class="shop_toolbar_wrapper justify-content-center m-t-50">
+                    <!-- Shopt Top Bar Right Start -->
+                    <div class="shop-top-bar-right">
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination">
+                                <li class="page-item {{y == pageNo ? 'active' : ''}}"
+                                    *ngFor="let p of listPage; let y = index">
+                                    <a class="page-link" (click)="listNumber(y)">{{y+1}}</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <!-- Shopt Top Bar Right End -->
+                </div>
+                <!--shop toolbar end-->
+
+            </div>
+            <div class="col-lg-3 col-12">
+                <!-- Sidebar Widget Start -->
+                <aside class="sidebar_widget m-t-50 mt-lg-0">
+                    <div class="widget_inner">
+                        <div class="widget-list m-b-50">
+                            <form (ngSubmit)="findProductByName()" [formGroup]="searchForm" method="get">
+                                <h3 class="widget-title m-b-30">Search</h3>
+                                <div class="search-box">
+                                    <input type="text" class="form-control" formControlName="search" name="search"
+                                        placeholder="Search Our Store" aria-label="Search Our Store">
+                                    <button class="search-icon" type="submit">
+                                        <i class="icon-magnifier"></i>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="widget-list m-b-50">
+                            <h3 class="widget-title m-b-30">Categories</h3>
+                            <div class="sidebar-body">
+                                <ul class="sidebar-list" *ngFor="let category of categoryes">
+                                    <li><a style="cursor: pointer;"
+                                        (click)="findByCategory(category.id)">{{category.name}}</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="widget-list m-b-50">
+                            <h3 class="widget-title m-b-30">Price</h3>
+                            <div class="sidebar-body">
+                                <div class="order">
+                                    <div class="price">
+                                        <div class="lstPrice">
+                                            <ul>
+                                                <li><a (click)="findByPriceBetween(2000000,5000000)" style="cursor: pointer;"
+                                                        title="Từ 2 - 5 triệu">Từ 2
+                                                        - 5 triệu</a></li>
+                                                <li><a (click)="findByPriceBetween(5000000,10000000)" style="cursor: pointer;" title="Từ 5 - 10 triệu">Từ 5
+                                                        - 10 triệu</a></li>
+                                                <li><a (click)="findByPriceBetween(10000000,20000000)" style="cursor: pointer;" title="Từ 10 - 20 triệu">Từ
+                                                        10 - 20 triệu</a></li>
+                                                <li><a (click)="findByPriceBetween(20000000,50000000)" style="cursor: pointer;" title="Từ 20 - 50 triệu">Từ
+                                                        20 - 50 triệu</a></li>
+                                                <li><a (click)="findByPriceBetween(51000000,150000000)" style="cursor: pointer;" title="Trên 50 Triệu">Trên
+                                                        50 Triệu</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="widget-list">
+                            <h3 class="widget-title m-b-30">Recent Products</h3>
+                            <div class="sidebar-body product-list-wrapper m-b-n30">
+                                <!-- Single Product List Start -->
+                                <div class="single-product-list m-b-30" *ngFor="let product of  productNew">
+
+                                    <!-- Product List Thumb Start -->
+                                    <div class="product">
+                                        <div class="thumb">
+                                            <a class="image">
+                                                <img class="fit-image" [src]="this.host+product.image" alt="Product">
+
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <!-- Product List Thumb End -->
+
+                                    <!-- Product List Content Start -->
+                                    <div class="product-list-content">
+                                        <h6 class="product-name">
+                                            <a>{{product.name}}</a>
+                                        </h6>
+                                        <span class="price" *ngIf="product.sale_price > 0">
+                                            <span class="new">{{product.sale_price | currency: 'USD' }}</span>
+                                            <span class="old">{{product.price | currency: 'USD'}}</span>
+                                            
+                                        </span>
+                                        <span class="price" *ngIf="product.sale_price == 0">
+                                            <span class="new">{{product.price | currency: 'USD'}}</span>
+                                        </span>
+                                    </div>
+                                    <!-- Product List Content End -->
+
+                                </div>
+                                <!-- Single Product List End -->
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+                <!-- Sidebar Widget End -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Shop Section End -->

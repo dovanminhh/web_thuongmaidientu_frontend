@@ -1,0 +1,126 @@
+<!-- Breadcrumb Area Start -->
+<div class="section breadcrumb-area bg-name-bright">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <div class="breadcrumb-wrapper">
+                    <h2 class="breadcrumb-title">Create Account</h2>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li>Create Account</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Breadcrumb Area End -->
+
+<!-- Register Section Start -->
+<div class="section section-margin">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7 col-md-8 m-auto">
+                <div class="login-wrapper">
+                    <!-- Register Title & Content Start -->
+                    <div class="section-content text-center m-b-30">
+                        <h2 class="title m-b-10">Create Account</h2>
+                    </div>
+                    <!-- Register Title & Content End -->
+                    <!-- Form Action Start -->
+                    <form (ngSubmit)="register()" [formGroup]="formRegister" method="post">
+                        <!-- Input First Name Start -->
+                        <div class="single-input-item m-b-10">
+                            <input type="text" formControlName="name" class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && f['name'].errors }" placeholder="Please enter your account name" />
+                            <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
+                                <div *ngIf="f['name'].errors['required']">Name cannot be blank</div>
+                                <div *ngIf="f['name'].errors['minlength']">
+                                    Name must be at least 6 characters
+                                </div>
+                                <div *ngIf="f['name'].errors['maxlength']">
+                                    Username must not exceed 40 characters
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Input First Name End -->
+                        <!-- Input Last Name Start -->
+                        <div class="single-input-item m-b-10">
+                            <input type="text" formControlName="email" class="form-control" name="email"
+                                [ngClass]="{ 'is-invalid': submitted && f['email'].errors }"
+                                placeholder="Enter email" />
+                            <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+                                <div *ngIf="f['email'].errors['required']">Email is required</div>
+                                <div *ngIf="f['email'].errors['email']">Email is invalid</div>
+                            </div>
+                        </div>
+                        <!-- Input Last Name End -->
+                        <!-- Input Email Start -->
+                        <div class="single-input-item m-b-10">
+                            <input type="password" formControlName="password" class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && f['password'].errors }"
+                                placeholder="Enter password" />
+                            <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
+                                <div *ngIf="f['password'].errors['required']">Password is required</div>
+                                <div *ngIf="f['password'].errors['minlength']">
+                                    Password must be at least 6 characters
+                                </div>
+                                <div *ngIf="f['password'].errors['maxlength']">
+                                    Username must not exceed 40 characters
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Input Email End -->
+                        <!-- Input Password Start -->
+                        <div class="single-input-item m-b-10">
+                            <input type="number" formControlName="phone" class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && f['phone'].errors }"
+                                placeholder="Enter phone" />
+                            <div *ngIf="submitted && f['phone'].errors" class="invalid-feedback">
+                                <div *ngIf="f['phone'].errors['required']">Phone is required</div>
+                                <div *ngIf="f['phone'].errors['minlength']">
+                                    Phone must be at least 6 characters
+                                </div>
+                                <div *ngIf="f['phone'].errors['maxlength']">
+                                    Username must not exceed 40 characters
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Input Password End -->
+                        <div class="single-input-item m-b-10">
+                            <input type="text" formControlName="address" class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && f['address'].errors }"
+                                placeholder="Enter address" />
+                            <div *ngIf="submitted && f['address'].errors" class="invalid-feedback">
+                                <div *ngIf="f['address'].errors['required']">Address is required</div>
+                                <div *ngIf="f['address'].errors['minlength']">
+                                    Address must be at least 6 characters
+                                </div>
+                                <div *ngIf="f['address'].errors['maxlength']">
+                                    Username must not exceed 40 characters
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Button/Forget Password Start -->
+                        <div class="single-input-item">
+                            <div class="login-reg-form-meta m-b-n15">
+                                <button class="btn btn btn-gray-deep btn-hover-primary m-b-15">Create</button>
+                            </div>
+                        </div>
+                        <!-- Button/Forget Password End -->
+                    </form>
+                    <!-- Form Action End -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Register Section End -->
+
+<!-- Scroll Top Start -->
+<a href="#" class="scroll-top show" id="scroll-top">
+    <i class="arrow-top ti-angle-double-up"></i>
+    <i class="arrow-bottom ti-angle-double-up"></i>
+</a>
+<!-- Scroll Top End -->

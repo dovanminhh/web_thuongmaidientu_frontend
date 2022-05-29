@@ -1,0 +1,90 @@
+<!-- Breadcrumb Area Start -->
+<div class="section breadcrumb-area bg-name-bright">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <div class="breadcrumb-wrapper">
+                    <h2 class="breadcrumb-title">Login</h2>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li>Login</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Breadcrumb Area End -->
+
+<!-- Login Section Start -->
+<div class="section section-margin">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7 col-md-8 m-auto">
+                <div class="login-wrapper">
+                    <!-- Login Title & Content Start -->
+                    <div class="section-content text-center m-b-30">
+                        <h2 class="title m-b-10">Login</h2>
+                    </div>
+                    <!-- Login Title & Content End -->
+                    <!-- Form Action Start -->
+                    <form (ngSubmit)="loginCus()" [formGroup]="formCustomer" method="post">
+                        <!-- Input Email Start -->
+                        <div class="single-input-item m-b-10">
+                            <input type="text" formControlName="email" class="form-control" name="email"
+                                [ngClass]="{ 'is-invalid': submitted && f['email'].errors }"
+                                placeholder="Please enter your account name" />
+                            <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+                                <div *ngIf="f['email'].errors['required']">Email is required</div>
+                                <div *ngIf="f['email'].errors['email']">Email is invalid</div>
+                            </div>
+                        </div>
+                        <!-- Input Email End -->
+                        <!-- Input Password Start -->
+                        <div class="single-input-item m-b-10">
+                            <input type="password" formControlName="password" class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && f['password'].errors }"
+                                placeholder="Enter password" />
+                            <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
+                                <div *ngIf="f['password'].errors['required']">Password is required</div>
+                                <div *ngIf="f['password'].errors['minlength']">
+                                    Password must be at least 6 characters
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <!-- Input Password End -->
+                        <!-- Button/Forget Password Start -->
+                        <div class="single-input-item m-b-15">
+                            <div class="login-reg-form-meta m-b-n15">
+                                <!-- Remember Password Start -->
+                                <!-- <p class="form-row m-b-10">
+                                    <input type="checkbox" id="remember_me">
+                                    <label for="remember_me" class="checkbox-label">Remember me</label>
+                                </p> -->
+                                <!-- Remember Password End -->
+                                <button class="btn btn btn-gray-deep btn-hover-primary m-b-15">Sign In</button>
+                                <!-- <a href="#" class="forget-pwd m-b-15">Forget Password?</a> -->
+                            </div>
+                        </div>
+                        <!-- Button/Forget Password End -->
+                        <!-- Lost Password & Creat New Account Start -->
+                        <div class="lost-password">
+                            <a [routerLink]="['/register']">Creat Account</a>
+                        </div>
+                        <!-- Lost Password & Creat New Account End -->
+                    </form>
+                    <!-- Form Action End -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Login Section End -->
+
+<!-- Scroll Top Start -->
+<a href="#" class="scroll-top show" id="scroll-top">
+    <i class="arrow-top ti-angle-double-up"></i>
+    <i class="arrow-bottom ti-angle-double-up"></i>
+</a>
+<!-- Scroll Top End -->

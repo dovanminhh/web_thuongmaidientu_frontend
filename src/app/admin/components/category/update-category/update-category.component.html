@@ -1,0 +1,49 @@
+
+
+<div class="content-wrapper">
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Category Update</h1>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="card">
+            <div class="card-body">
+                <form (ngSubmit)="onSubmit()">
+                <div class="row">
+                    <div class="col-md-6">
+                        
+                            <div class="form-group">
+                                <label for="">CategoryId</label>
+                                <input style="width: 100%;" type="number" class="form-control" [(ngModel)]="category.id" name="id" id="id" readonly="readonly">
+                            </div>
+                            <div class="form-group">
+                                <label for="">CategoryName</label>
+                                <input style="width:100%;" type="text" class="form-control" id="name" [(ngModel)]="category.name"
+                                    name="name">
+                            </div>
+                            <div class="form-group">
+                                <label>Status</label><br>
+                                <select style="width:100%;" [(ngModel)]="category.status" name="status"
+                                class=" nice-select wide rounded-0">
+                                    <option value="1">Đang bán</option>
+                                    <option value="0">Ngưng bán</option>
+                                </select>
+                            </div>
+                            
+                        
+                    </div>
+                </div>
+                <button style="width: 49%;" class="sub" type="submit">Submit</button>
+            </form>
+            </div>
+        </div>
+    </section>
+
+</div>

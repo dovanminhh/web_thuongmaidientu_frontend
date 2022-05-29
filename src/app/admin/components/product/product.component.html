@@ -1,0 +1,81 @@
+<div class="content-wrapper">
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Product List</h1>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="card">
+            <div class="card-body">
+                <button [routerLink]="['/admin/product/create-product']" type="button" class="add">Add New</button>
+
+                <form class="form-inline md-form mr-auto mb-4" [formGroup]="searchForm" method="get"
+                    (ngSubmit)="searchProduct()">
+                    <input class="form-control mr-sm-2" type="text" formControlName="search" name="search"
+                        placeholder="enter search name" aria-label="Search">
+                    <button class="btn btn-sm my-0 " type="submit" style="background-color: gainsboro;">Search</button>
+                </form>
+
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Images</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                            <th>SalePrice</th>
+                            <th>Description</th>
+                            <th>Insurance</th>
+                            <th>Status</th>
+                            <th>Category</th>
+                            <th>CreatedDate</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let product of products">
+                            <td> {{ product.id }}</td>
+                            <td> {{ product.name }}</td>
+                            <td>
+                                <img [src]="this.host+product.image" alt="" style="width: 70px;">
+                            </td>
+                            <td> {{ product.quantity }}</td>
+                            <td> {{ product.price | currency: 'USD'}}</td>
+                            <td> {{ product.sale_price | currency: 'USD'}}</td>
+                            <td> {{ product.insurance }}</td>
+                            <td> {{ product.status == 1? "Đang bán": "Ngưng bán" }}</td>
+                            <td> {{ product.objCat.name }}</td>
+                            <td> {{ product.created_date}}</td>
+                            <td>
+                                <button (click)="detailProduct(product.id)" class="detail">Detail</button>
+                            </td>
+                            <td>
+                                <button (click)="updateProduct(product.id)" class="edit">Edit</button>
+                            </td>
+                            <td>
+                                <button (click)="deleteProduct(product.id)" class="delete">Delete</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br>
+
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                        <li class="page-item {{y == pageNo ? 'active' : ''}}" *ngFor="let p of listPage; let y = index">
+                            <a class="page-link" (click)="listNumber(y)">{{y+1}}</a>
+                        </li>
+                    </ul>
+                </nav>
+              
+            </div>
+        </div>
+    </section>
+    
+</div>

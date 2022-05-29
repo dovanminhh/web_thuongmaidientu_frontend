@@ -1,0 +1,31 @@
+.card .add {
+    border: none;
+    background-color: green;
+    color: aliceblue;
+    padding: 5px 10px 5px 10px;
+    font-size: 18px;
+}
+.card .detail{
+    border: none;
+    background-color: dodgerblue;
+    color: aliceblue;
+    padding: 5px 10px 5px 10px;
+    font-size: 18px;
+    margin-top: 20px;
+}
+.card .edit{
+    border: none;
+    background-color: coral;
+    color: aliceblue;
+    padding: 5px 10px 5px 10px;
+    font-size: 18px;
+    margin-top: 20px;
+}
+.card .delete{
+    border: none;
+    background-color: red;
+    color: aliceblue;
+    padding: 5px 10px 5px 10px;
+    font-size: 18px;
+    margin-top: 20px;
+}

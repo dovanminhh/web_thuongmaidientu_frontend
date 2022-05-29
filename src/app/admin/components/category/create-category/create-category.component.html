@@ -1,0 +1,96 @@
+<!-- <div class="content-wrapper">
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Category Add</h1>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="card">
+            <div class="card-body">
+                <form (ngSubmit)="onSubmit()" [formGroup]="form" #addForm="ngForm" role="forms">
+                    <div class="form-group">
+                        <label for="">CategoryName</label>
+                        
+                        <input formControlName="name" id="name" type="text" class="form-control">
+                                    <div *ngIf="f['name'].touched && f['name'].invalid" class="alert alert-danger">
+                                        <div *ngIf="f['name'].errors && f['name'].errors['required']">Name is required.
+                                        </div>
+                                        <div *ngIf="f['name'].errors && f['name'].errors['minlength']">Name should be 3
+                                            character.</div>
+                                    </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Status</label><br>
+                        <select style="width:50%;" formControlName="status" name="status"
+                            class=" nice-select wide rounded-0">
+                            <option value="1">Đang bán</option>
+                            <option value="0">Ngưng bán</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="" style="width: 50%; margin-top: 10px; margin-right: 100px;">CreatedDate</label>
+                        <input style="width:50%;" type="text" class="form-control" name="created_date">
+                    </div>
+
+                    <button style="width: 50%;" class="sub" type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+</div> -->
+
+
+
+<div class="content-wrapper">
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Category Add</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="card">
+            <div class="card-body">
+
+                <form (ngSubmit)="onSubmit()" [formGroup]="form" #addForm="ngForm" enctype="multipart/form-data"
+                    method="post" role="form">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Name</label>
+                                <input type="text" formControlName="name" class="form-control"
+                                    [ngClass]="{ 'is-invalid': submitted && f['name'].errors }" />
+                                <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
+                                    <div *ngIf="f['name'].errors['required']">Name is required</div>
+                                    <div *ngIf="f['name'].errors['minlength']">
+                                        Name must be at least 6 characters
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Status</label><br>
+                                <input type="radio" id="status" name="status" formControlName ="status" value="0" checked="checked">
+                                <label for="">Ẩn</label><br>
+                                <input type="radio" id="status" name="status" formControlName ="status" value="1" >
+                                <label for="">Hiện</label>
+                            </div>
+                        </div>
+                    </div>
+                    <button style="width: 50%;" class="sub" type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+    </section>
+</div>

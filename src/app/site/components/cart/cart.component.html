@@ -1,0 +1,139 @@
+    <!-- Breadcrumb Area Start -->
+    <div class="section breadcrumb-area bg-name-bright">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <div class="breadcrumb-wrapper">
+                        <h2 class="breadcrumb-title">Cart-Detail</h2>
+                        <ul>
+                            <li><a [routerLink]="['']">Home</a></li>
+                            <li>Cart-Detail</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb Area End -->
+
+    <!-- Shopping Cart Section Start -->
+    <div class="section section-margin">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-12">
+                    <div *ngIf="cartItems.length == 0" class="alert alert-warning col-md-12" style="left:50px; min-height:40px;"
+                role="alert">
+                No items in cart!
+            </div>
+                    <!-- Cart Table Start -->
+                    <div class="cart-table table-responsive" *ngIf="cartItems.length > 0">
+                        <table class="table table-bordered">
+                            <!-- Table Head Start -->
+                            <thead>
+                                <tr>
+                                    <th class="pro-price">Id</th>
+                                    <th class="pro-thumbnail">Image</th>
+                                    <th class="pro-title">Name</th>
+                                    <th class="pro-price">Price</th>
+                                    <th class="pro-quantity">Quantity</th>
+                                    <th class="pro-subtotal">Total</th>
+                                    <th class="pro-remove">Remove</th>
+                                </tr>
+                            </thead>
+                            <!-- Table Head End -->
+
+                            <!-- Table Body Start -->
+                            <tbody>
+                                <tr *ngFor="let tempCartItem of cartItems">
+                                    <td>{{ tempCartItem.id }}</td>
+                                    <td class="pro-thumbnail">
+                                        <img class="fit-image" [src]="this.host+tempCartItem.image" alt="Product">
+                                    </td>
+                                    <td class="pro-title">{{ tempCartItem.name }}</td>
+                                    <td class="pro-price"><span>{{ tempCartItem.price | currency: 'VND'}}</span></td>
+                                    <div class="items">
+                                        <div class="row no-gutters" style="padding-left: 10%">
+                                            <!-- spacer -->
+                                            <div class="col-1"></div>
+                                            <!-- quantity increment -->
+                                            <div class="col">
+                                                <button (click)="incrementQuantity(tempCartItem)"
+                                                    class="btn btn-sm">
+                                                    <i class="fas fa-plus nut-left" style="font-size: 8px; "></i>
+                                                </button>
+                                                {{ tempCartItem.quantity }}
+                                                <button (click)="decrementQuantity(tempCartItem)"
+                                                    class="btn btn-sm">
+                                                    <i class="fas fa-minus nut-right" style="font-size: 8px; "></i>
+                                                </button>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <td class="pro-subtotal"><span>{{ tempCartItem.quantity * tempCartItem.price | currency: 'VND' }}</span></td>
+                                    <td class="pro-remove"><a (click)="remove(tempCartItem)" ><i class="ti-trash" style="cursor: pointer;"></i></a></td>
+                                </tr>
+                            </tbody>
+                            <!-- Table Body End -->
+                        </table>
+                    </div>
+                    <!-- Cart Table End -->
+
+                    <!-- Cart Button Start -->
+                    <div class="cart-button-section m-b-n20">
+                        <!-- Cart Button left Side Start -->
+                        <div class="cart-btn-lef-side m-b-20">
+                            <a [routerLink]="['/shop']" class="btn btn btn-gray-deep btn-hover-primary">Continue Shopping</a>
+                        </div>
+                        <!-- Cart Button left Side End -->
+                        <!-- Cart Button Right Side Start -->
+                        <div class="cart-btn-right-right m-b-20">
+                            <a href="#" class="btn btn btn-gray-deep btn-hover-primary">Clear Shopping Cart</a>
+                        </div>
+                        <!-- Cart Button Right Side End -->
+                    </div>
+                    <!-- Cart Button End -->
+                </div>
+            </div>
+
+            <div class="row m-t-50">
+                <div class="col-lg-6 me-0 ms-auto">
+                    <!-- Cart Calculation Area Start -->
+                    <div class="cart-calculator-wrapper">
+                        <!-- Cart Calculate Items Start -->
+                        <div class="cart-calculate-items">
+                            <!-- Cart Calculate Items Title Start -->
+                            <h3 class="title">Cart Totals</h3>
+                            <!-- Cart Calculate Items Title End -->
+                            <!-- Responsive Table Start -->
+                            <div class="table-responsive">
+                                <table class="table" *ngIf="totalQuantity != 0">
+                                    <tr>
+                                        <td>Total Quantity</td>
+                                        <td>{{ totalQuantity }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Shipping</td>
+                                        <td>$70</td>
+                                    </tr>
+                                    <tr class="total">
+                                        <td>Total Price</td>
+                                        <td class="total-amount">{{ totalPrice | currency: 'USD' }}</td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <!-- Responsive Table End -->
+                        </div>
+                        <!-- Cart Calculate Items End -->
+                        <!-- Cart Checktout Button Start -->
+                        <a *ngIf="cartItems == null || cartItems.length == 0" [routerLink]="['/shop']" class="btn btn btn-gray-deep btn-hover-primary m-t-30">Proceed To Checkout</a>
+                        <a *ngIf="cartItems.length > 0 " [routerLink]="['/checkout']" class="btn btn btn-gray-deep btn-hover-primary m-t-30">Proceed To Checkout</a>
+                        <!-- Cart Checktout Button End -->
+                    </div>
+                    <!-- Cart Calculation Area End -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Shopping Cart Section End -->
